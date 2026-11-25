@@ -1,0 +1,4 @@
+n_vectors = 512
+w_in = 10
+w_out = 13
+coef_frac = 13

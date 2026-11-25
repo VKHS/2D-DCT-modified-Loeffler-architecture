@@ -1,0 +1,17 @@
+build/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.vcd
+*.vvp
+# Vivado / Vitis outputs
+xsim.dir/
+*.jou
+*.log
+*.pb
+*.wdb
+.Xil/
+vivado*.str
+# MATLAB / Octave
+*.asv
+octave-workspace

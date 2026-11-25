@@ -1,0 +1,23 @@
+name: smoke-test
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install simulators and Octave
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends iverilog octave
+      - name: Install Python packages
+        run: python -m pip install -r python/requirements.txt
+      - name: Smoke test (Python, HLS C-sim, Verilog, Octave)
+        run: bash scripts/smoke_test.sh

@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper below."
+title: "High-speed 2-D DCT processor based on a modified Loeffler architecture"
+type: software
+authors:
+  - family-names: "Khalili Sadaghiani"
+    given-names: "AbdolVahab"
+    orcid: "https://orcid.org/0000-0003-4870-2768"
+    affiliation: "Linköping University"
+repository-code: "https://github.com/VKHS/2D-DCT-modified-Loeffler-architecture"
+license: MIT
+keywords:
+  - DCT
+  - 2-D DCT
+  - Loeffler
+  - FPGA
+  - Verilog
+  - HLS
+  - image compression
+preferred-citation:
+  type: conference-paper
+  authors:
+    - family-names: "Khalili Sadaghiani"
+      given-names: "AbdolVahab"
+    - family-names: "Ghanbari"
+      given-names: "Mohammad"
+  title: "An Optimized Hardware Design for high speed 2D-DCT processor based on modified Loeffler architecture"
+  collection-title: "2019 27th Iranian Conference on Electrical Engineering (ICEE)"
+  conference:
+    name: "27th Iranian Conference on Electrical Engineering (ICEE)"
+    city: "Yazd"
+    country: "IR"
+  publisher:
+    name: "IEEE"
+  year: 2019
+  start: 1476
+  end: 1480
+  doi: "10.1109/IranianCEE.2019.8786608"

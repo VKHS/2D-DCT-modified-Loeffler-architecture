@@ -1,0 +1,13 @@
+n_blocks = 63
+coef_frac = 13
+row_frac = 2
+pixel_bits = 8
+out_bits = 12
+tsc_enable = 0
+t0 = 1
+step = 1
+tmax = 10
+min_similar = 3
+approx_mode = 0
+zone = 5
+threshold_table = 0 23 46 69 92 115 138 162 185 208 231 254 277 300 323 346
