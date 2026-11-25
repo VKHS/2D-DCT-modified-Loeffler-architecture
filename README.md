@@ -163,7 +163,7 @@ column 7 starts at once, so the processor accepts a new block every 8 clocks.
 ![RTL waveform](docs/figures/rtl_waveform.png)
 
 The schedule and the waveform are drawn from a VCD of `rtl/tb/tb_dct2d_top.v` with the
-`tsc` vectors. Row 7 of block 0 enters at clock 10 and column 0 of block 0 leaves at clock 28:
+`tsc` vectors. Row 7 of block 0 enters at clock 11 and column 0 of block 0 leaves at clock 29:
 18 clocks of latency, then one column per clock.
 
 | `dct2d_top` | |
@@ -241,14 +241,14 @@ The operation counts come from the Loeffler flow graph in
 already known: operations with a zero operand, a pass-through, x + x (a shift) or a result
 that repeats an earlier value are free, and an approximated block computes only the
 coefficients of its zone. Replaced rows make column inputs equal, which removes mostly
-additions; multiplications vanish only when a rotation input becomes zero. The counts are
+additions; multiplications vanish mainly when a multiplier input becomes zero. The counts are
 the arithmetic a data-aware engine with operand isolation would execute; the pipelined RTL
 runs both engines on every clock and produces the same coefficients either way.
 
 ![TSC behaviour](docs/figures/tsc_behaviour.png)
 
-Smooth regions such as the sky in *camera* and most of *moon* lose most of their rows to
-replacement; textured regions keep theirs (a, b). The cumulative distribution (c) shows the
+Smooth regions lose most of their rows to replacement, on average 4.2 of 7 in the sky of
+*camera*, while its grass keeps nearly all of them (a, b). The cumulative distribution (c) shows the
 share of consecutive row pairs under each threshold: below tmax = 0.010 fall 91 % of the pairs
 of *moon* and 75 % of *brick*, but only 52 % of *camera* and 39 % of *coffee*; 57 % of the
 row pairs of *moon* are identical.

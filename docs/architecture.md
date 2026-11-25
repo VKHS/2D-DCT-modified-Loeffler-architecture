@@ -46,8 +46,9 @@ Moschytz (ICASSP 1989), 11 multiplications and 29 additions:
 
 Each rotation uses the 3-multiplier form `z = K(xp + xq)`, `yp = z + A·xq`, `yq = z − B·xp`.
 The three products are kept at full precision, and every rotation output is rounded once:
-`yp = (K(xp + xq) + A·xq + 2^12) >>> 13`. The pre-adder, multiplier and post-adder map onto
-one DSP slice (A/D → pre-adder, M register, P register).
+`yp = (K(xp + xq) + A·xq + 2^12) >>> 13`. The shared product has the shape of a DSP slice with
+its pre-adder (A/D → pre-adder → M register), and each output adds its own product in a
+post-adder (P register), so a rotation fits three DSP slices.
 
 | rotation | inputs | K | A | B | constants, CF = 13 |
 |---|---|---|---|---|---|
@@ -84,9 +85,10 @@ RF = 2 and CF = 13:
 | column | −4096 … 4080 (13 bit) | 16 bit (Y0 = −32768 … 32640) | 16 | 31 |
 
 The output `F = round(Z / 32)` lies in −1024 … 1020 and is delivered as 12-bit two's
-complement. Against the floating-point orthonormal DCT the maximum error is 0.73 LSB and
-3.6 % of the coefficients differ from ideal rounding by one
-([`fixed_point_accuracy.png`](figures/fixed_point_accuracy.png)).
+complement. Against the floating-point orthonormal DCT the maximum error is 0.71 LSB over
+6000 random blocks and the blocks of *camera*, where 3.6 % of the coefficients differ from
+ideal rounding by one ([`fixed_point_accuracy.png`](figures/fixed_point_accuracy.png)); on the
+eight sample images it is 0.69–0.76 LSB.
 
 ## 3. TSC unit (`tsc_unit.v`)
 
